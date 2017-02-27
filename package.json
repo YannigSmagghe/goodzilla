@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "main": "builder.js",
   "dependencies": {
-    "bootstrap": "*",
-    "physijs": "*",
-    "three-js": "*"
+    "bootstrap": "^3.3.7"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
