@@ -9,7 +9,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_PATH=/usr/bin/node",
+    "dev": "npm start & webpack-dev-server --progress --colors"
   },
   "repository": {
     "type": "git",
