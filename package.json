@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    "bootstrap": "^3.3.7",
-    "physijs": "file:node_modules/physijs",
-    "three-js": "file:node_modules/three-js"
+    "bootstrap": "*",
+    "physijs": "*",
+    "three-js": "*"
   },
   "devDependencies": {},
   "scripts": {
