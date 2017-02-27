@@ -1,0 +1,23 @@
+{
+  "name": "goodzilla",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YannigSmagghe/goodzilla.git"
+  },
+  "author": "Pilou, DebYann, WillYa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YannigSmagghe/goodzilla/issues"
+  },
+  "homepage": "https://github.com/YannigSmagghe/goodzilla#readme"
+}
