@@ -3,13 +3,7 @@
   "version": "1.0.0",
   "main": "builder.js",
   "dependencies": {
-    "bootstrap": "^3.3.7",
-    "physijs": "0.0.4",
-    "three": "^0.79.0",
-    "webpack": "^2.2.1"
-  },
-  "devDependencies": {
-    "html-webpack-plugin": "^2.28.0"
+    "bootstrap": "^3.3.7"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
