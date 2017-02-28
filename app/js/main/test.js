@@ -1,1 +1,1 @@
-module.exports = "Salut bande";
+module.exports = "Salut bande ";

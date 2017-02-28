@@ -1,1 +1,1 @@
-module.exports = "de salope";
+module.exports = "de salope !";
