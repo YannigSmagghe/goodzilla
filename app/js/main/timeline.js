@@ -2,7 +2,7 @@
 // init game
 // lunch game
 // listen action
-
+const THREE = require('three');
 var scene, camera, renderer;
 
 var WIDTH  = window.innerWidth;
@@ -11,8 +11,9 @@ var HEIGHT = window.innerHeight;
 var SPEED = 0.01;
 
 function init() {
+    console.log(THREE);
     scene = new THREE.Scene();
-
+    console.log(scene);
     initMesh();
     console.log('init mesh : ok');
 
@@ -26,9 +27,11 @@ function init() {
     console.log('init renderer : ok');
 
     document.body.appendChild(renderer.domElement);
+    console.log(renderer.domElement);
 }
 
 function initCamera() {
+
     camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 1, 10);
     camera.position.set(0, 3.5, 5);
     camera.lookAt(scene.position);
@@ -80,5 +83,4 @@ function render() {
     renderer.render(scene, camera);
 }
 
-init();
-render();
+module.exports = {init,render};
