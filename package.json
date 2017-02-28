@@ -1,13 +1,21 @@
 {
   "name": "goodzilla",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "builder.js",
   "dependencies": {
-    "bootstrap": "^3.3.7",
-    "physijs": "file:node_modules/physijs",
-    "three-js": "file:node_modules/three-js"
+    "bootstrap": "*",
+    "physijs": "*",
+    "three-js": "*"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "css-loader": "^0.26.2",
+    "style-loader": "^0.13.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "*"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_PATH=/usr/bin/node",
