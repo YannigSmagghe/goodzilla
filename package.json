@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "builder.js",
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "*",
+    "webpack": "^2.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
@@ -12,7 +13,8 @@
     "css-loader": "^0.26.2",
     "style-loader": "^0.13.2",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "*"
+    "webpack-dev-server": "*",
+    "html-webpack-plugin": "^2.28.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
