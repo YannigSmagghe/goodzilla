@@ -23,3 +23,16 @@ canvas {
     width: 60% !important;
     height: 60% !important;
 }
+
+.canevas-personnage-menu {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position : absolute;
+    right: 17%;
+    opacity: 0.85;
+    height: 52%;
+    width: 25%;
+}
