@@ -1,9 +1,6 @@
-var string1 = require("./app/js/main/test.js");
-
-
-document.write(string1);
-
+var singe = require("./app/js/main/timeline.js");
 var surface = require("./app/js/main/movement.js");
 
-
+singe.init();
+singe.render();
 surface.demo();

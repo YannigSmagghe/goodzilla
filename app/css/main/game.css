@@ -1,0 +1,25 @@
+@font-face {
+
+    font-family: POLYA;
+    src: url("/app/assets/font/POLYA.otf") format("opentype");
+}
+
+html {
+
+    background-image: url("/app/assets/img/sky.png");
+
+}
+
+body {
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+canvas {
+
+    position: relative;
+    width: 60% !important;
+    height: 60% !important;
+}

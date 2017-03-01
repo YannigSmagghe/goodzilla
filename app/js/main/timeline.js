@@ -1,14 +1,14 @@
 // *** Timeline file ***
 // init game
 // lunch game
-// listen action
+// listen action*
 const THREE = require('three');
 var scene, camera, renderer;
 
 var WIDTH  = window.innerWidth;
 var HEIGHT = window.innerHeight;
 
-var SPEED = 0.01;
+var SPEED = 0.005;
 
 function init() {
     console.log(THREE);
@@ -39,7 +39,7 @@ function initCamera() {
 
 
 function initRenderer() {
-    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer = new THREE.WebGLRenderer({ antialias: true , alpha: true});
     renderer.setSize(WIDTH, HEIGHT);
 }
 
@@ -55,14 +55,32 @@ var mesh = null;
 
 function initMesh() {
 
+    var material = new THREE.MeshPhongMaterial({
+           color: new THREE.Color(0x258C87),
+           shininess: 100,
+           shading: THREE.SmoothShading,
+           reflectivity: 100,
+           ambient: new THREE.Color(0xffffff),
+       });
+
     var loader = new THREE.ObjectLoader();
 
-    loader.load( "../../app/assets/element/scene_torus.json", function ( loadedObj ) {
+loader.load( "../../app/assets/element/scene_torus.json", function ( loadedObj ) {
+              var suz = loadedObj.getObjectByName("Suzanne");
+              var testMeshText = new THREE.Mesh(suz.geometry, material);
+              testMeshText.name = "suz";
+              testMeshText.rotation.x = -2;
+              testMeshText.rotation.z = -2;
+              testMeshText.scale.x = testMeshText.scale.y = testMeshText.scale.z = 1;
+              scene.add(testMeshText);
+           });
+
+    /*loader.load( "../../app/assets/element/scene_torus.json", function ( loadedObj ) {
 		var suzanne = loadedObj.getObjectByName("Suzanne");
 		suzanne.name = "suz";
 		suzanne.rotation.x = -2;
 		scene.add(suzanne);
-	});
+	});*/
 }
 
 function rotateMesh() {
@@ -77,7 +95,7 @@ function rotateMesh() {
 }
 
 function render() {
-	renderer.setClearColor (0xffffff, 1);
+	renderer.setClearColor (0x000000, 0);
     requestAnimationFrame(render);
     rotateMesh();
     renderer.render(scene, camera);
