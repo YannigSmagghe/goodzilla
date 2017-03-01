@@ -270,7 +270,8 @@ function demo (){
 
         if ( controlsEnabled ) {
             raycaster.ray.origin.copy( controls.getObject().position );
-            raycaster.ray.origin.y -= 10;
+            // +10 sous le mesh
+            // raycaster.ray.origin.y -= 10;
 
             var intersections = raycaster.intersectObjects( objects );
 
