@@ -209,7 +209,6 @@ function demo() {
             face.vertexColors[2] = new THREE.Color().setHSL(Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75);
 
         }
-²
         material = new THREE.MeshBasicMaterial({vertexColors: THREE.VertexColors});
 
         mesh = new THREE.Mesh(geometry, material);
