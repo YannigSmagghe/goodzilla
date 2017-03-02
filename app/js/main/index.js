@@ -6,4 +6,6 @@ document.getElementById("Jouer").onclick = function () {
   };
   localStorage.setItem("_charOptions", JSON.stringify(charOptions));
   document.location="/app/templates/game.html";
+  // Change timeline
+  localStorage.setItem('timeline', 'game');
 };

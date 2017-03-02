@@ -6,7 +6,7 @@
 
 html {
 
-    background-image: url("/app/assets/img/sky.png");
+    /*background-image: url("/app/assets/img/sky.png");*/
 
 }
 
@@ -18,10 +18,9 @@ body {
 }
 
 canvas {
-
     position: relative;
-    width: 60% !important;
-    height: 60% !important;
+    width: 100% !important;
+    height: 100% !important;
 }
 
 .canevas-personnage-menu {

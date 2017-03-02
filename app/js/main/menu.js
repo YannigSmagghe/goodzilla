@@ -1,10 +1,11 @@
-// *** Timeline file ***
+// *** Menu file ***
 const THREE = require('three');
 var imports = require('./import.js');
 var scene, camera, renderer;
 var WIDTH  = window.innerWidth;
 var HEIGHT = window.innerHeight;
 var SPEED = 0.01;
+var initSettingAssets = false;
 
 // Create store
 var assetStore = imports.importAsset();
@@ -26,8 +27,17 @@ function initGame() {
     initRenderer();
     console.log('init renderer : ok');
 
+    // initSettingAsset();
+
+
     document.body.appendChild(renderer.domElement);
 
+}
+
+function initSettingAsset(tree) {
+    tree.scale.z = tree.scale.y = tree.scale.x = 0.5;
+    tree.position.x = -0.5;
+    tree.position.y = -1;
 }
 
 function initCamera() {
@@ -53,14 +63,15 @@ function initLights() {
 var mesh = null;
 
 function initMesh() {
-    imports.createObject('tree2', 'tree2_1', materialStore, scene);
+    imports.createObject('tree2', 'tree2_3', materialStore, scene);
 }
 
-function rotateMesh() {
+function rotateMesh() {    
     var tree2 = scene.getObjectByName('tree2');
-    tree2.scale.z = tree2.scale.y = tree2.scale.x = 0.5;
-    tree2.position.x = -0.5;
-    tree2.position.y = -1;
+    if (!initSettingAssets) {
+        initSettingAsset(tree2);
+        initSettingAssets = true;
+    }        
     if (!tree2) {
         return;
     }else{
@@ -73,7 +84,7 @@ function rotateMesh() {
 function render() {
     renderer.setClearColor (0x000000, 0);
     requestAnimationFrame(render);
-    rotateMesh();
+    rotateMesh();    
     renderer.render(scene, camera);
 }
 

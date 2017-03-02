@@ -81,7 +81,8 @@ function createObject(objectName, materialName, materialStore, scene) {
         var newMesh = new THREE.Mesh(newObj.geometry, materialStore[materialName]);
         newMesh.name = objectName;
         newMesh.rotation.x = -2;
-        newMesh.scale.x = newMesh.scale.y = newMesh.scale.z = 0.9;
+        newMesh.scale.x = newMesh.scale.y = newMesh.scale.z = 1;
+        newMesh.position.x = newMesh.position.y = newMesh.position.z = 1;
         scene.add(newMesh);
  	});
 }

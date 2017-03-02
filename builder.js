@@ -1,10 +1,18 @@
-var string1 = require("./app/js/main/test.js");
-var string2 = require("./app/js/main/test2.js");
-document.write(string1 + string2);
+var completPath = document.location.href;
+var repositoryPath  = completPath.substring( 0 ,completPath.lastIndexOf( "/" ) );
+var fileName = completPath.substring(completPath.lastIndexOf( "/" )+1 );
 
-
-var timeline = require("./app/js/main/timeline.js");
-timeline.initGame();
-timeline.render();
+if (fileName == 'game.html') {
+	console.log('xxxxxxxx - Load game - xxxxxxxx');
+	var timeline = require("./app/js/main/timeline.js");
+	timeline.initGame();
+	timeline.render();
+}else if (fileName == '') {
+	console.log('xxxxxxxx - Load menu - xxxxxxxx');
+	var menu = require("./app/js/main/menu.js");
+	menu.initGame();
+	menu.render();
+}
 
 // surface.demo();
+
