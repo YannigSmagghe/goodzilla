@@ -312,7 +312,7 @@ function demo (){
 
     function checkalive(){
         if (!alive){
-           console.log('dead')
+            console.log('dead')
 
         }
     }
@@ -342,9 +342,8 @@ function demo (){
                 var ray = new THREE.Raycaster( originPoint, directionVector.clone().normalize() );
                 var collisionResults = ray.intersectObjects( objects );
                 if ( collisionResults.length > 0 && collisionResults[0].distance < directionVector.length() )
-                   player.position.x=0;
+                    player.position.x=0;
             }
-
 
             checkalive();
 
