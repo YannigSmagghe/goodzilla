@@ -14,6 +14,7 @@ module.exports = function ( cube ) {
     cube.rotation.set( 0, 0, 0 );
     //
     var pitchObject = new THREE.Object3D();
+
     pitchObject.add( cube );
     //
     var yawObject = new THREE.Object3D();
