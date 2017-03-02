@@ -1,8 +1,174 @@
- body {
- 	margin: 0;
- }
+@font-face {
 
- canvas {
- 	width: 100%; 
- 	height: 100%;
- }
+    font-family: POLYA;
+    src: url("/app/assets/font/POLYA.otf") format("opentype");
+}
+
+html {
+
+    background-image: url("/app/assets/img/landscape_bg_accueil.png");
+}
+
+body {
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+canvas {
+
+    position: relative;
+    width: 60% !important;
+    height: 60% !important;
+}
+
+.menu-milieu-gauche-centre {
+
+    opacity: 1;
+    height: 70%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu-button {
+
+    opacity: 0.85;
+    border: 1px solid;
+    border-color: #e8ab7a;
+    background-color: #e8ab7a;
+    text-align: center;
+    height: 130px;
+    width: 450px;
+    font-size: 60px;
+    color: #000000;
+    font-family: POLYA;
+}
+
+.menu-button:hover {
+
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+    perspective: 800px;
+    perspective-origin: top left;
+    transform: rotateY(360deg);
+    color: #ffffff;
+    font-weight: 800;
+    transition: 1s;
+}
+
+.canevas-personnage-menu {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position : absolute;
+    right: 17%;
+    opacity: 0.85;
+    height: 52%;
+    width: 25%;
+}
+
+.container-h {
+
+    width: 130px;
+    height: 60px;
+    position: absolute;
+    perspective: 800px;
+    right: 24%;
+    bottom: 10%;
+}
+
+.container-v {
+
+    width: 50px;
+    height: 90px;
+    position: absolute;
+    perspective: 800px;
+    right: 9%;
+    bottom: 40%;
+}
+
+#carousel-h {
+
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+#carousel-v {
+
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+#carousel-h figure {
+
+    margin: 0;
+    opacity: 0.95;
+    display: block;
+    position: absolute;
+    width: 96px;
+    height: 46px;
+    top: 10px;
+    border: 2px solid black;
+}
+
+#carousel-v figure {
+
+    margin: 0;
+    opacity: 0.95;
+    display: block;
+    position: absolute;
+    width: 76px;
+    height: 96px;
+    top: 10px;
+    border: 2px solid black;
+}
+
+#carousel-h figure:nth-child(1) { transform: rotateY(   0deg ) translateZ( 238px ); }
+#carousel-h figure:nth-child(2) { transform: rotateY(  40deg ) translateZ( 238px ); }
+#carousel-h figure:nth-child(3) { transform: rotateY(  80deg ) translateZ( 238px ); }
+#carousel-h figure:nth-child(4) { transform: rotateY( 120deg ) translateZ( 238px ); }
+#carousel-h figure:nth-child(5) { transform: rotateY( 160deg ) translateZ( 238px ); }
+#carousel-h figure:nth-child(6) { transform: rotateY( 200deg ) translateZ( 238px ); }
+#carousel-h figure:nth-child(7) { transform: rotateY( 240deg ) translateZ( 238px ); }
+#carousel-h figure:nth-child(8) { transform: rotateY( 280deg ) translateZ( 238px ); }
+#carousel-h figure:nth-child(9) { transform: rotateY( 320deg ) translateZ( 238px ); }
+
+#carousel-v figure:nth-child(1) { transform: rotateX(   0deg ) translateZ( 238px ); }
+#carousel-v figure:nth-child(2) { transform: rotateX(  40deg ) translateZ( 238px ); }
+#carousel-v figure:nth-child(3) { transform: rotateX(  80deg ) translateZ( 238px ); }
+#carousel-v figure:nth-child(4) { transform: rotateX( 120deg ) translateZ( 238px ); }
+#carousel-v figure:nth-child(5) { transform: rotateX( 160deg ) translateZ( 238px ); }
+#carousel-v figure:nth-child(6) { transform: rotateX( 200deg ) translateZ( 238px ); }
+#carousel-v figure:nth-child(7) { transform: rotateX( 240deg ) translateZ( 238px ); }
+#carousel-v figure:nth-child(8) { transform: rotateX( 280deg ) translateZ( 238px ); }
+#carousel-v figure:nth-child(9) { transform: rotateX( 320deg ) translateZ( 238px ); }
+
+.test {
+
+    background-image: url("/app/assets/img/landscape_one.png");
+}
+
+.menu-boutton-carousel-h {
+
+    z-index: 150;
+    position: absolute;
+    right: 25%;
+    bottom: 5%;
+}
+
+.menu-boutton-carousel-v {
+
+    z-index: 150;
+    position: absolute;
+    right: 5%;
+    bottom: 30%;
+}
