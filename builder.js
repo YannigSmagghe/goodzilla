@@ -6,3 +6,5 @@ document.write(string1 + string2);
 var timeline = require("./app/js/main/timeline.js");
 timeline.initGame();
 timeline.render();
+
+// surface.demo();

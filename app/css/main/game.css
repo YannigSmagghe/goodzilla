@@ -1,0 +1,38 @@
+@font-face {
+
+    font-family: POLYA;
+    src: url("/app/assets/font/POLYA.otf") format("opentype");
+}
+
+html {
+
+    background-image: url("/app/assets/img/sky.png");
+
+}
+
+body {
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+canvas {
+
+    position: relative;
+    width: 60% !important;
+    height: 60% !important;
+}
+
+.canevas-personnage-menu {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position : absolute;
+    right: 17%;
+    opacity: 0.85;
+    height: 52%;
+    width: 25%;
+}

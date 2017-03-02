@@ -1,12 +1,26 @@
+<<<<<<< HEAD
 // // *** Timeline file ***
 
 var THREE = require('three');
 var imports = require('./import.js');
+=======
+// *** Timeline file ***
+// init game
+// lunch game
+// listen action*
+const THREE = require('three');
+var scene, camera, renderer;
+>>>>>>> 4c9a21a82414b8de4415c69b89f589b52041f5a4
 
 var scene, camera, renderer;
 var WIDTH  = window.innerWidth;
 var HEIGHT = window.innerHeight;
+<<<<<<< HEAD
 var SPEED = 0.01;
+=======
+
+var SPEED = 0.005;
+>>>>>>> 4c9a21a82414b8de4415c69b89f589b52041f5a4
 
 // Create store
 var assetStore = imports.importAsset();
@@ -40,7 +54,7 @@ function initCamera() {
 }
 
 function initRenderer() {
-    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer = new THREE.WebGLRenderer({ antialias: true , alpha: true});
     renderer.setSize(WIDTH, HEIGHT);
 }
 
@@ -55,8 +69,38 @@ function initLights() {
 var mesh = null;
 
 function initMesh() {
+<<<<<<< HEAD
     console.log(materialStore);
     imports.createObject('tree2', 'tree2_3', materialStore, scene);
+=======
+
+    var material = new THREE.MeshPhongMaterial({
+           color: new THREE.Color(0x258C87),
+           shininess: 100,
+           shading: THREE.SmoothShading,
+           reflectivity: 100,
+           ambient: new THREE.Color(0xffffff),
+       });
+
+    var loader = new THREE.ObjectLoader();
+
+loader.load( "../../app/assets/element/scene_torus.json", function ( loadedObj ) {
+              var suz = loadedObj.getObjectByName("Suzanne");
+              var testMeshText = new THREE.Mesh(suz.geometry, material);
+              testMeshText.name = "suz";
+              testMeshText.rotation.x = -2;
+              testMeshText.rotation.z = -2;
+              testMeshText.scale.x = testMeshText.scale.y = testMeshText.scale.z = 1;
+              scene.add(testMeshText);
+           });
+
+    /*loader.load( "../../app/assets/element/scene_torus.json", function ( loadedObj ) {
+		var suzanne = loadedObj.getObjectByName("Suzanne");
+		suzanne.name = "suz";
+		suzanne.rotation.x = -2;
+		scene.add(suzanne);
+	});*/
+>>>>>>> 4c9a21a82414b8de4415c69b89f589b52041f5a4
 }
 
 function rotateMesh() {
@@ -71,7 +115,11 @@ function rotateMesh() {
 }
 
 function render() {
+<<<<<<< HEAD
  renderer.setClearColor (0xffffff, 1);
+=======
+	renderer.setClearColor (0x000000, 0);
+>>>>>>> 4c9a21a82414b8de4415c69b89f589b52041f5a4
     requestAnimationFrame(render);
     rotateMesh();
     renderer.render(scene, camera);
