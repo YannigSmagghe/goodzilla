@@ -8,6 +8,8 @@ function demo (){
     var geometry, material, mesh;
     var controls;
 
+    var alive = true;
+
     var objects = [];
 
     var raycaster;
@@ -78,6 +80,7 @@ function demo (){
     }
 
     init();
+    console.log(controls.getObject());
     animate();
 
     var controlsEnabled = false;
@@ -106,9 +109,10 @@ function demo (){
         scene.add( light );
 
         // Move on item
-        cube = new createCharacter();
-        console.log(cube);
-        controls = new PointerLockControls( cube );
+        cubePlayer = new createCharacter();
+        // console.log(cube);
+        controls = new PointerLockControls( cubePlayer );
+        // console.log(PointerLockControls);
         scene.add( controls.getObject() );
 
         var onKeyDown = function ( event ) {
@@ -174,6 +178,7 @@ function demo (){
         document.addEventListener( 'keydown', onKeyDown, false );
         document.addEventListener( 'keyup', onKeyUp, false );
 
+        // création des endroits qui vont être collison
         raycaster = new THREE.Raycaster( new THREE.Vector3(), new THREE.Vector3( 0, - 1, 0 ), 0, 10 );
 
         // floor
@@ -217,21 +222,53 @@ function demo (){
 
         }
 
-        for ( var i = 0; i < 500; i ++ ) {
+        for ( var i = 0; i < 50; i ++ ) {
 
-            material = new THREE.MeshPhongMaterial( { specular: 0xffffff, shading: THREE.FlatShading, vertexColors: THREE.VertexColors } );
+            material = new THREE.MeshPhongMaterial( { specular: 0x808080, shading: THREE.FlatShading, vertexColors: THREE.VertexColors,color: 0x99FF33 * Math.random() } );
 
             var mesh = new THREE.Mesh( geometry, material );
+            mesh.name = (i);
             mesh.position.x = Math.floor( Math.random() * 20 - 10 ) * 20;
             mesh.position.y = Math.floor( Math.random() * 20 ) * 20 + 10;
             mesh.position.z = Math.floor( Math.random() * 20 - 10 ) * 20;
             scene.add( mesh );
 
-            material.color.setHSL( Math.random() * 0.2 + 0.5, 0.75, Math.random() * 0.25 + 0.75 );
-
             objects.push( mesh );
 
         }
+
+        // bosse
+        wall = new THREE.Mesh( new THREE.CubeGeometry( 20, 30, 60 ), new THREE.MeshNormalMaterial() );
+        wall.name = 'wall';
+        wall.position.x  = 50;
+        wall.position.y  = 10;
+        scene.add(wall);
+        objects.push( wall );
+
+
+        var cubeGeometry = new THREE.CubeGeometry(50,50,50,1,1,1);
+        var wireMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe:true } );
+        MovingCube = new THREE.Mesh( cubeGeometry, wireMaterial );
+        MovingCube.position.set(0, 25.1, 0);
+        // scene.add( MovingCube );
+
+        var wallGeometry = new THREE.CubeGeometry( 100, 100, 20, 1, 1, 1 );
+        var wallMaterial = new THREE.MeshBasicMaterial( {color: 0x8888ff} );
+        // var wireMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, wireframe:true } );
+
+        var wall = new THREE.Mesh(wallGeometry, wallMaterial);
+        wall.position.set(100, 50, -100);
+        scene.add(wall);
+        objects.push(wall);
+
+        var wall2 = new THREE.Mesh(wallGeometry, wallMaterial);
+        wall2.position.set(-150, 50, 0);
+        wall2.rotation.y = 3.14159 / 2;
+        scene.add(wall2);
+        objects.push(wall2);
+
+
+
 
         //
 
@@ -264,6 +301,22 @@ function demo (){
 
     }
 
+    function chute(){
+        var terrain = 0;
+        if (controls.getObject().position.y > terrain+70){
+            alive=false;
+        }
+
+
+    }
+
+    function checkalive(){
+        if (!alive){
+           console.log('dead')
+
+        }
+    }
+
     function animate() {
 
         requestAnimationFrame( animate );
@@ -273,11 +326,43 @@ function demo (){
             // +10 sous le mesh
             // raycaster.ray.origin.y -= 10;
 
+            // Test de survie
+            if (chute()){
+                return alive = false;
+            }
+            var player = controls.getObject();
+            var originPoint = player.position;
+            // console.log(Player);
+            for (var vertexIndex = 0; vertexIndex < cubePlayer.geometry.vertices.length; vertexIndex++)
+            {
+                var localVertex = cubePlayer.geometry.vertices[vertexIndex].clone();
+                var globalVertex = localVertex.applyMatrix4( cubePlayer.matrix );
+                var directionVector = globalVertex.sub( cubePlayer.position );
+
+                var ray = new THREE.Raycaster( originPoint, directionVector.clone().normalize() );
+                var collisionResults = ray.intersectObjects( objects );
+                if ( collisionResults.length > 0 && collisionResults[0].distance < directionVector.length() )
+                   player.position.x=0;
+            }
+
+
+            checkalive();
+
+            // Prend la liste des objets que l'on peut rencontrer
             var intersections = raycaster.intersectObjects( objects );
+            if (0 < intersections.length ){
+                // console.log(intersections);
+            }
+
+
+
+
+
 
             var isOnObject = intersections.length > 0;
 
             var time = performance.now();
+
             var delta = ( time - prevTime ) / 1000;
 
             velocity.x -= velocity.x * 10.0 * delta;
