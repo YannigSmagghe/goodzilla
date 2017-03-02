@@ -2,10 +2,12 @@ var carouselH = $(".carousel-h");
 var carouselV = $(".carousel-v");
 var currDegY = 0;
 var currDegX = 0;
-var currDegYData = "#116af9";
+var currDegYData = 0x116af9;
 var currDegXData = "carte 1";
 var tempRotationY = 0;
 var tempRotationX = 0;
+
+localStorage.setItem("_colorVar", JSON.stringify(currDegYData));
 
 
 $(".button-carousel-h-next").click(function(){
@@ -57,31 +59,31 @@ function rotate(e, carousel, axis){
         });
         switch(tempRotationY){
             case 0:
-                currDegYData = "#116af9";       // bleu roi
+                changeColor(0x116af9);       // bleu roi
                 break;
             case 1:
-                currDegYData = "#0acece";       //bleu caraibes
+                changeColor(0x0acece);       //bleu caraibes
                 break;
             case 2:
-                currDegYData = "#1aba8c";       //vert aurore
+                changeColor(0x1aba8c);       //vert aurore
                 break;
             case 3:
-                currDegYData = "#12ea45";       //vert uranium
+                changeColor(0x12ea45);       //vert uranium
                 break;
             case 4:
-                currDegYData = "#a5d613";       //vert citron
+                changeColor(0xa5d613);       //vert citron
                 break;
             case 5:
-                currDegYData = "#ffff00";       //jaune pur
+                changeColor(0xffff00);       //jaune pur
                 break;
             case 6:
-                currDegYData = "#b79633";       //taupe
+                changeColor(0xb79633);       //taupe
                 break;
             case 7:
-                currDegYData = "#d6d6d6";       //gris silver
+                changeColor(0xd6d6d6);       //gris silver
                 break;
             case 8:
-                currDegYData = "#841126";       //bordeau vin
+                changeColor(0x841126);       //bordeau vin
                 break;
             default:
         }
@@ -144,6 +146,10 @@ function changeDataValue(param){
     }else {
         return param;
     }
+}
+
+function changeColor(color) {
+    localStorage.setItem("_colorVar", JSON.stringify(color));
 }
 
 

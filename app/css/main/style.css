@@ -152,10 +152,62 @@ canvas {
 #carousel-v figure:nth-child(8) { transform: rotateX( 280deg ) translateZ( 238px ); }
 #carousel-v figure:nth-child(9) { transform: rotateX( 320deg ) translateZ( 238px ); }
 
-.test {
-
-    background-image: url("/app/assets/img/landscape_one.png");
+.texture1 {
+    background-color: #116af9;
 }
+.texture2 {
+    background-color: #0acece;
+}
+.texture3 {
+    background-color: #1aba8c;
+}
+.texture4 {
+    background-color: #12ea45;
+}
+.texture5 {
+    background-color: #a5d613;
+}
+.texture6 {
+    background-color: #ffff00;
+}
+.texture7 {
+    background-color: #b79633;
+}
+.texture8 {
+    background-color: #d6d6d6;
+}
+.texture9 {
+    background-color: #841126;
+}
+
+.perso1 {
+
+}
+.perso2 {
+
+}
+.perso3 {
+
+}
+.perso4 {
+
+}
+.perso5 {
+
+}
+.perso6 {
+
+}
+.perso7 {
+
+}
+.perso8 {
+
+}
+.perso9 {
+
+}
+
 
 .menu-boutton-carousel-h {
 
