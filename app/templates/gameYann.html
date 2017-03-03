@@ -76,14 +76,25 @@
     <meta charset="utf-8">
 </head>
 <body>
-<div id="blocker">
-    <div id="instructions">
-        <span style="font-size:40px">Click to play</span>
+<div id="gameEnv">
+    <div id="instructions" style="color:black"">
+        <span style="font-size:40px; color:black">Click to play</span>
         <br />
         (W, A, S, D = Move, SPACE = Jump, MOUSE = Look around)
     </div>
-
 </div>
+<p id="score" style="
+    position: absolute;
+    display: block;
+    color: red;
+    top: 29px;
+    left: 0">Score : <span id="scoreResult"></span></p>
+<p id="lives" style="
+    position: absolute;
+    display: block;
+    color: red;
+    top: 50px;
+    left: 0">Lives : <span id="livesResult"></span></p>
 <script type="text/javascript" src="../../bundle.js" charset="utf-8"></script>
 </body>
 </html>

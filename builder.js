@@ -13,6 +13,8 @@ if (fileName == 'game.html') {
 	menu.initGame();
 	menu.render();
 }
-var surface = require("./app/js/main/movement.js");
-surface.demo();
-
+var jeux = require("./app/js/main/movement.js");
+// jeux.demo();
+jeux.initGame(); // Mesh, texture, surface ...
+jeux.renderer();
+jeux.launchGame();
