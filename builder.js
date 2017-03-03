@@ -13,6 +13,6 @@ if (fileName == 'game.html') {
 	menu.initGame();
 	menu.render();
 }
-
-// surface.demo();
+var surface = require("./app/js/main/movement.js");
+surface.demo();
 

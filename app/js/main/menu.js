@@ -35,7 +35,7 @@ function initGame() {
 }
 
 function initSettingAsset(tree) {
-    tree.scale.z = tree.scale.y = tree.scale.x = 0.5;
+    // tree.scale.z = tree.scale.y = tree.scale.x = 0.5;
     tree.position.x = -0.5;
     tree.position.y = -1;
 }
@@ -68,6 +68,7 @@ function initMesh() {
 
 function rotateMesh() {    
     var tree2 = scene.getObjectByName('tree2');
+    // console.log(tree2);
     if (!initSettingAssets) {
         initSettingAsset(tree2);
         initSettingAssets = true;

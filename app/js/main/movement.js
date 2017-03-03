@@ -1,6 +1,12 @@
 var THREE = require('three');
 var OIMO = require('oimo');
 var PointerLockControls = require('../lib/PointerLockControls.js');
+var imports = require('./import.js');
+var assetStore = imports.importAsset();
+var materialStore = imports.importMaterial();
+
+var initSettingAssets = false;
+
 
 
 function demo() {
@@ -82,7 +88,14 @@ function demo() {
     }
 
     init();
+    initMesh();
+    initbackground();
+    // initGround1();
+    // initGround2();
+    // initGround3();
+    // console.log(scene);
     animate();
+
 
     var controlsEnabled = false;
 
@@ -105,19 +118,23 @@ function demo() {
         camera.position.z = 175;
 
         scene = new THREE.Scene();
-        scene.fog = new THREE.Fog(0xffffff, 0, 750);
+        scene.fog = new THREE.Fog(0x808080, 0, 750);
 
         var light = new THREE.HemisphereLight(0xeeeeff, 0x777788, 0.75);
         light.position.set(0.5, 1, 0.75);
         scene.add(light);
 
         createGround();
+
         // Move on item
         cubePlayer = new createCharacter();
         // console.log(cube);
         controls = new PointerLockControls(cubePlayer);
         // console.log(PointerLockControls);
         scene.add(controls.getObject());
+
+        ball = new createBall();
+
 
 
         var onKeyDown = function (event) {
@@ -214,34 +231,6 @@ function demo() {
         mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
-        // objects
-        //
-        // geometry = new THREE.BoxGeometry( 20, 20, 20 );
-        //
-        // for ( var i = 0, l = geometry.faces.length; i < l; i ++ ) {
-        //
-        //     var face = geometry.faces[ i ];
-        //     face.vertexColors[ 0 ] = new THREE.Color().setHSL( Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75 );
-        //     face.vertexColors[ 1 ] = new THREE.Color().setHSL( Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75 );
-        //     face.vertexColors[ 2 ] = new THREE.Color().setHSL( Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75 );
-        //
-        // }
-        //
-        // for ( var i = 0; i < 50; i ++ ) {
-        //
-        //     material = new THREE.MeshPhongMaterial( { specular: 0x808080, shading: THREE.FlatShading, vertexColors: THREE.VertexColors,color: 0x99FF33 * Math.random() } );
-        //
-        //     var mesh = new THREE.Mesh( geometry, material );
-        //     mesh.name = (i);
-        //     mesh.position.x = Math.floor( Math.random() * 20 - 10 ) * 20;
-        //     mesh.position.y = Math.floor( Math.random() * 20 ) * 20 + 10;
-        //     mesh.position.z = Math.floor( Math.random() * 20 - 10 ) * 20;
-        //     scene.add( mesh );
-        //
-        //     // objects.push( mesh );
-        //
-        // }
-
         // bosse
         wall = new THREE.Mesh(new THREE.CubeGeometry(10, 30, 60), new THREE.MeshNormalMaterial());
         wall.name = 'wall';
@@ -249,28 +238,6 @@ function demo() {
         wall.position.y = 10;
         scene.add(wall);
         objects.push(wall);
-
-
-        // var cubeGeometry = new THREE.CubeGeometry(50,50,50,1,1,1);
-        // var wireMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe:true } );
-        // MovingCube = new THREE.Mesh( cubeGeometry, wireMaterial );
-        // MovingCube.position.set(0, 25.1, 0);
-        // scene.add( MovingCube );
-        //
-        // var wallGeometry = new THREE.CubeGeometry( 100, 100, 20, 1, 1, 1 );
-        // var wallMaterial = new THREE.MeshBasicMaterial( {color: 0x8888ff} );
-        // // var wireMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, wireframe:true } );
-        //
-        // var wall = new THREE.Mesh(wallGeometry, wallMaterial);
-        // wall.position.set(100, 50, -100);
-        // scene.add(wall);
-        // objects.push(wall);
-        //
-        // var wall2 = new THREE.Mesh(wallGeometry, wallMaterial);
-        // wall2.position.set(-150, 50, 0);
-        // wall2.rotation.y = 3.14159 / 2;
-        // scene.add(wall2);
-        // objects.push(wall2);
 
 
         //
@@ -286,6 +253,35 @@ function demo() {
         window.addEventListener('resize', onWindowResize, false);
 
     }
+
+    function initSettingAsset(object) {
+        // console.log(object);
+        object.scale.z = object.scale.y = object.scale.x = 550;
+        object.position.z = -300;
+        object.position.x = -0.5;
+        object.position.y = -1;
+    }
+
+    function initMesh() {
+        imports.createObject('tree2', 'tree2_3', materialStore, scene);
+    }
+    function initbackground() {
+
+        imports.createObject('Map1', '', materialStore, scene);
+    }
+    function initGround1() {
+
+        imports.createObject('groundJumpLeft', '', materialStore, scene);
+    }
+    function initGround2() {
+
+        imports.createObject('groundJumpRight', '', materialStore, scene);
+    }
+    function initGround3() {
+
+        imports.createObject('groundPlayerStart.001', '', materialStore, scene);
+    }
+
 
     function createGround() {
         //ground
@@ -321,6 +317,17 @@ function demo() {
         return cube;
     }
 
+    function createBall(){
+        var geometry = new THREE.SphereGeometry( 5, 32, 32);
+        var material = new THREE.MeshPhongMaterial( {specular: "#fdfb57", color: "#d8d613", emissive: "#6b6a0d", side: THREE.DoubleSide} );
+        var ball = new THREE.Mesh(geometry, material);
+        ball.position.y = 50;
+        var dxPerFrame = 1; // how to move in a single frame
+        objects.push(ball);
+
+        scene.add(ball);
+    }
+
     function onWindowResize() {
 
         camera.aspect = window.innerWidth / window.innerHeight;
@@ -335,8 +342,6 @@ function demo() {
         if (controls.getObject().position.y > terrain + 90) {
             alive = false;
         }
-
-
     }
 
     function checkalive() {
@@ -370,10 +375,14 @@ function demo() {
                 var ray = new THREE.Raycaster(originPoint, directionVector.clone().normalize());
                 var collisionResults = ray.intersectObjects(objects);
                 if (collisionResults.length > 0 && collisionResults[0].distance < directionVector.length()) {
-                    console.log(collisionResults[0].object.name);
+                    // console.log(collisionResults[0].object.name);
                 }
 
-                if (collisionResults.length > 0 && collisionResults[0].distance < directionVector.length() && collisionResults[0].object.name != 'ground1')
+                if (collisionResults.length > 0 && collisionResults[0].distance < directionVector.length()
+                    && collisionResults[0].object.name != 'ground1'
+                    && collisionResults[0].object.name != 'ground2'
+                    && collisionResults[0].object.name != 'ground3'
+                )
                     player.position.x = 0;
             }
 
@@ -397,11 +406,11 @@ function demo() {
 
             velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
 
-            if (moveForward) velocity.z -= 400.0 * delta;
-            if (moveBackward) velocity.z += 400.0 * delta;
+            if (moveForward) velocity.z -= 5000.0 * delta;
+            if (moveBackward) velocity.z += 5000.0 * delta;
 
-            if (moveLeft) velocity.x -= 400.0 * delta;
-            if (moveRight) velocity.x += 400.0 * delta;
+            if (moveLeft) velocity.x -= 5000.0 * delta;
+            if (moveRight) velocity.x += 5000.0 * delta;
 
             if (isOnObject === true) {
                 velocity.y = Math.max(0, velocity.y);
@@ -421,25 +430,94 @@ function demo() {
                 canJump = true;
 
             }
+            //Background
+
+            var SPEED= 1;
+            if (!initSettingAssets){
+                var map1 = scene.getObjectByName('Map1');
+
+                if (!initSettingAssets) {
+                    initSettingAsset(map1);
+                    initSettingAssets = true;
+                }
+                if (!map1) {
+                    return;
+                }else{
+                    // suz.rotation.x -= SPEED * 2;
+                    // suz.rotation.y -= SPEED;
+                    map1.rotation.z -= SPEED * 3;
+                }
+            }
 
             // move grounds:
-            var speed = 10;
-            velocityGround.x -= velocityGround.x * 10.0 * delta;
+
+            // velocityGround.x -= velocityGround.x * 1.0 * delta;
+            //
+            // if (!initSettingAssets){
+            //     var ground1 = scene.getObjectByName('ground1');
+            //
+            //     if (!initSettingAssets) {
+            //         initSettingAsset(ground1);
+            //         initSettingAssets = true;
+            //     }
+            //     if (!ground1) {
+            //         return;
+            //     }else{
+            //         // suz.rotation.x -= SPEED * 2;
+            //         // suz.rotation.y -= SPEED;
+            //         ground1.rotation.z -= SPEED * 3;
+            //     }
+            // }
+            // if (!initSettingAssets){
+            //     var ground2 = scene.getObjectByName('ground2');
+            //
+            //     if (!initSettingAssets) {
+            //         initSettingAsset(ground2);
+            //         initSettingAssets = true;
+            //     }
+            //     if (!ground2) {
+            //         return;
+            //     }else{
+            //         // suz.rotation.x -= SPEED * 2;
+            //         // suz.rotation.y -= SPEED;
+            //         ground2.rotation.z -= SPEED * 3;
+            //     }
+            // }
+            // if (!initSettingAssets){
+            //     var ground3 = scene.getObjectByName('ground3');
+            //
+            //     if (!initSettingAssets) {
+            //         initSettingAsset(ground3);
+            //         initSettingAssets = true;
+            //     }
+            //     if (!ground3) {
+            //         return;
+            //     }else{
+            //         // suz.rotation.x -= SPEED * 2;
+            //         // suz.rotation.y -= SPEED;
+            //         ground3.rotation.z -= SPEED * 3;
+            //     }
+            // }
+            var speed = 0.1;
             ground1.translateX(velocityGround.x -= speed * delta);
             if(ground1.position.x < -600){
-                console.log('move');
                 ground1.position.x = 600;
             };
             ground2.translateX(velocityGround.x -= speed * delta);
             if(ground2.position.x < -600){
-                console.log('move');
                 ground2.position.x = 600;
             };
             ground3.translateX(velocityGround.x -= speed * delta);
             if(ground3.position.x < -600){
-                console.log('move');
                 ground3.position.x = 600;
             };
+
+            //obstacles
+            // ball.translateX(velocityGround.x -= speed * delta);
+            // if(ground1.position.x < -600){
+            //     ground1.position.x = 600;
+            // };
+
 
             prevTime = time;
 
