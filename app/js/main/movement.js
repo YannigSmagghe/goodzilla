@@ -287,12 +287,6 @@ function initCharacter() {
     cube = new THREE.Mesh(new THREE.CubeGeometry(20, 20, 20), new THREE.MeshNormalMaterial());
     cube.name = ('character');
     scene.add(cube);
-    var texture = new THREE.Texture(canvas)
-    texture.needsUpdate = true;
-    var spriteMaterial = new THREE.SpriteMaterial(
-        { map: texture, useScreenCoordinates: false, alignment: spriteAlignment } );
-    var sprite = new THREE.Sprite( spriteMaterial );
-    sprite.scale.set(100,50,1.0);
 
     return cube;
 }
