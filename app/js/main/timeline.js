@@ -55,7 +55,7 @@ function initLights() {
 var mesh = null;
 
 function initMesh() {
-    imports.createObject('tree2', 'tree2_1', materialStore, scene);
+    imports.createObject('Boby', 'tree2_1', materialStore, scene);
 
     var material = new THREE.MeshPhongMaterial({
            color: new THREE.Color(colorVar),

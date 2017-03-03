@@ -34,10 +34,12 @@ function initGame() {
 
 }
 
-function initSettingAsset(tree) {
-    tree.scale.z = tree.scale.y = tree.scale.x = 0.5;
-    tree.position.x = -0.5;
-    tree.position.y = -1;
+function initSettingAsset(object) {
+    // var object = scene.getObjectByName('Boby');
+    object.scale.z = object.scale.y = object.scale.x = 0.5;
+    // object.position.x = -0.5;
+    object.position.y = -2;
+    object.rotation.x = 10;
 }
 
 function initCamera() {
@@ -63,15 +65,15 @@ function initLights() {
 var mesh = null;
 
 function initMesh() {
-    imports.createObject('tree2', 'tree2_3', materialStore, scene);
+    imports.createObject('Boby', 'boby_2', materialStore, scene);
 }
 
-function rotateMesh() {    
-    var tree2 = scene.getObjectByName('tree2');
+function rotateMesh() {
+    var tree2 = scene.getObjectByName('Boby');
     if (!initSettingAssets) {
         initSettingAsset(tree2);
         initSettingAssets = true;
-    }        
+    }
     if (!tree2) {
         return;
     }else{
@@ -84,7 +86,7 @@ function rotateMesh() {
 function render() {
     renderer.setClearColor (0x000000, 0);
     requestAnimationFrame(render);
-    rotateMesh();    
+    rotateMesh();
     renderer.render(scene, camera);
 }
 
