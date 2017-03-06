@@ -27,9 +27,6 @@ function initGame() {
     initRenderer();
     console.log('init renderer : ok');
 
-    // initSettingAsset();
-
-
     document.body.appendChild(renderer.domElement);
 
 }
@@ -81,11 +78,22 @@ function rotateMesh() {
     }
 }
 
+function textureListener() {
+    if(JSON.parse(localStorage.getItem("_colorVar")) == JSON.parse(localStorage.getItem("_colorVarBefore"))) {
+
+    }else {
+        scene.getObjectByName("tree2").material.map = THREE.ImageUtils.loadTexture( JSON.parse(localStorage.getItem("_colorVarBefore")) );
+        scene.getObjectByName("tree2").material.needsUpdate = true;
+        localStorage.setItem("_colorVarBefore", localStorage.getItem("_colorVar"));
+    }
+}
+
 function render() {
     renderer.setClearColor (0x000000, 0);
     requestAnimationFrame(render);
-    rotateMesh();    
+    rotateMesh();
     renderer.render(scene, camera);
+    textureListener();
 }
 
 module.exports = {initGame, render};

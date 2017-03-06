@@ -1,8 +1,10 @@
+var pseudoChar = "";
 
 document.getElementById("Jouer").onclick = function () {
   var charOptions = {
       couleur: currDegYData,
-      forme: currDegXData
+      forme: currDegXData,
+      pseudo: pseudoChar
   };
   localStorage.setItem("_charOptions", JSON.stringify(charOptions));
   document.location="/app/templates/game.html";

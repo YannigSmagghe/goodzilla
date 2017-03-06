@@ -57,25 +57,6 @@ var mesh = null;
 function initMesh() {
     imports.createObject('tree2', 'tree2_1', materialStore, scene);
 
-    var material = new THREE.MeshPhongMaterial({
-           color: new THREE.Color(colorVar),
-           shininess: 100,
-           shading: THREE.SmoothShading,
-           reflectivity: 100,
-           ambient: new THREE.Color(0xffffff),
-       });
-
-    var loader = new THREE.ObjectLoader();
-
-loader.load( "../../app/assets/element/scene_torus.json", function ( loadedObj ) {
-              var suz = loadedObj.getObjectByName("Suzanne");
-              var testMeshText = new THREE.Mesh(suz.geometry, material);
-              testMeshText.name = "suz";
-              testMeshText.rotation.x = -2;
-              testMeshText.rotation.z = -2;
-              testMeshText.scale.x = testMeshText.scale.y = testMeshText.scale.z = 1;
-              scene.add(testMeshText);
-           });
 }
 
 function rotateMesh() {
@@ -92,9 +73,9 @@ function rotateMesh() {
     }
 }
 
-function colorListener() {
+/*function colorListener() {
     if(JSON.parse(localStorage.getItem("_colorVar"))) {
-        scene.getObjectByName("suz").material.color.setHex(JSON.parse(localStorage.getItem("_colorVar")));
+        //scene.getObjectByName("suz").material.color.setHex(JSON.parse(localStorage.getItem("_colorVar")));
         //console.log(mesh);
         //mesh.material.color.setHex(JSON.parse(localStorage.getItem("_colorVar")));
         //mesh.material.color.setHex(0xff0000);
@@ -103,7 +84,7 @@ function colorListener() {
 
     }
 
-}
+}*/
 
 /*function shapeListener() {
     if(JSON.parse(localStorage.getItem("_shapeVar"))) {

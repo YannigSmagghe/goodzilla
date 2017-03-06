@@ -2,12 +2,14 @@ var carouselH = $(".carousel-h");
 var carouselV = $(".carousel-v");
 var currDegY = 0;
 var currDegX = 0;
-var currDegYData = 0x116af9;
+var currDegYData = '../../app/assets/texture/tree2_1.png';
+var currDegYDataToBecome = '../../app/assets/texture/tree2_1.png';
 var currDegXData = "carte 1";
 var tempRotationY = 0;
 var tempRotationX = 0;
 
 localStorage.setItem("_colorVar", JSON.stringify(currDegYData));
+localStorage.setItem("_colorVarBefore", JSON.stringify(currDegYDataToBecome));
 
 
 $(".button-carousel-h-next").click(function(){
@@ -59,31 +61,31 @@ function rotate(e, carousel, axis){
         });
         switch(tempRotationY){
             case 0:
-                changeColor(0x116af9);       // bleu roi
+                changeColor('../../app/assets/texture/tree2_1.png');
                 break;
             case 1:
-                changeColor(0x0acece);       //bleu caraibes
+                changeColor('../../app/assets/texture/tree2_2.png');
                 break;
             case 2:
-                changeColor(0x1aba8c);       //vert aurore
+                changeColor('../../app/assets/texture/tree2_3.png');
                 break;
             case 3:
-                changeColor(0x12ea45);       //vert uranium
+                changeColor('../../app/assets/texture/tree2_4.png');
                 break;
             case 4:
-                changeColor(0xa5d613);       //vert citron
+                changeColor('../../app/assets/texture/tree2_5.png');
                 break;
             case 5:
-                changeColor(0xffff00);       //jaune pur
+                changeColor('../../app/assets/texture/tree2_6.png');
                 break;
             case 6:
-                changeColor(0xb79633);       //taupe
+                changeColor('../../app/assets/texture/tree2_7.png');
                 break;
             case 7:
-                changeColor(0xd6d6d6);       //gris silver
+                changeColor('../../app/assets/texture/tree2_8.png');
                 break;
             case 8:
-                changeColor(0x841126);       //bordeau vin
+                changeColor('../../app/assets/texture/tree2_9.png');
                 break;
             default:
         }

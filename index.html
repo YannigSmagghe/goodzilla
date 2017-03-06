@@ -4,8 +4,8 @@
         <title>GoodZilla</title>
         <link rel="stylesheet" type="text/css" href="app/css/main/style.css" />
     </head>
-    <body>
-        <div class="menu-milieu-gauche-centre col-md-6">
+    <body class="body">
+        <div class="menu-milieu-gauche-centre">
             <!--<div class="menu-button-group">-->
             <button type="button" class="menu-button" id="Jouer"> Jouer </button>
             <button type="button" class="menu-button"> Host </button>
@@ -13,49 +13,45 @@
             <button type="button" class="menu-button"> Options </button>
             <!--</div>-->
         </div>
-        <div class="canevas-personnage-menu col-md-6">
-            <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
-        </div>
-        <section class="container-h">
-            <div class="carousel-h" id="carousel-h">
-                <figure class="texture1"></figure>
-                <figure class="texture2"></figure>
-                <figure class="texture3"></figure>
-                <figure class="texture4"></figure>
-                <figure class="texture5"></figure>
-                <figure class="texture6"></figure>
-                <figure class="texture7"></figure>
-                <figure class="texture8"></figure>
-                <figure class="texture9"></figure>
-            </div>
-        </section>
-        <section class="container-v">
-            <div class="carousel-v" id="carousel-v">
-                <figure class="perso1"></figure>
-                <figure class="perso1"></figure>
-                <figure class="perso1"></figure>
-                <figure class="perso1"></figure>
-                <figure class="perso1"></figure>
-                <figure class="perso1"></figure>
-                <figure class="perso1"></figure>
-                <figure class="perso1"></figure>
-                <figure class="perso1"></figure>
-            </div>
-        </section>
+        <div class="menu-milieu-droite-centre">
+            <div class="column-group">
+                <input id="inputPseudo" type="text" placeholder="Nickname">
 
-        <!--<div class="menu-boutton-carousel-h">
-            <button type="button" class="button-carousel-h-prev"> << </button>
-            <button type="button" class="button-carousel-h-next"> >> </button>
+                <!--<div class="canevas-personnage-menu col-md-6">
+                    <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
+                </div>-->
+                <section class="container-h">
+                    <div class="carousel-h" id="carousel-h">
+                        <figure class="texture1"></figure>
+                        <figure class="texture2"></figure>
+                        <figure class="texture3"></figure>
+                        <figure class="texture4"></figure>
+                        <figure class="texture5"></figure>
+                        <figure class="texture6"></figure>
+                        <figure class="texture7"></figure>
+                        <figure class="texture8"></figure>
+                        <figure class="texture9"></figure>
+                    </div>
+                </section>
+            </div>
+            <section class="container-v">
+                <div class="carousel-v" id="carousel-v">
+                    <figure class="perso1"></figure>
+                    <figure class="perso1"></figure>
+                    <figure class="perso1"></figure>
+                    <figure class="perso1"></figure>
+                    <figure class="perso1"></figure>
+                    <figure class="perso1"></figure>
+                    <figure class="perso1"></figure>
+                    <figure class="perso1"></figure>
+                    <figure class="perso1"></figure>
+                </div>
+            </section>
         </div>
-        <div class="menu-boutton-carousel-v">
-            <button type="button" class="button-carousel-v-prev"> << </button>
-            <button type="button" class="button-carousel-v-next"> >> </button>
-        </div>-->
-
         <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
         <script type="text/javascript" src='app/js/main/fctCarousel.js'></script>
         <script type="text/javascript" src='app/js/main/index.js'></script>
-        <script type="text/javascript" src='app/js/main/timeline.js'></script>
+        <script type="text/javascript" src='app/js/main/menu.js'></script>
     </body>
 <footer>
 

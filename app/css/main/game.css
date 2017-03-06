@@ -1,20 +1,17 @@
 @font-face {
-
     font-family: POLYA;
     src: url("/app/assets/font/POLYA.otf") format("opentype");
 }
 
 html {
 
-    /*background-image: url("/app/assets/img/sky.png");*/
-
+    background-image: url("/app/assets/img/sky.png");
 }
 
 body {
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
 
 canvas {
@@ -34,4 +31,50 @@ canvas {
     opacity: 0.85;
     height: 52%;
     width: 25%;
+}
+
+progress {
+ appearance: none;
+ position: relative;
+ overflow: hidden;
+ width: 2em;
+ height: 1.5em;
+ padding: 0;
+ border: none;
+ font-family: POLYA;
+ font-size: 100px;
+ transition: height .4s;
+}
+
+progress.hidden {
+  height: 0;
+  transition-delay: .4s;
+}
+
+progress::before {
+  content: attr(value);
+  position: absolute;
+  top:0; left: 0; right: 0; bottom: 0;
+  text-align: center;
+  font-size: 1.5em;
+  line-height: .62em;
+  color: hsla(0,0%,100%,.2);
+  background: linear-gradient(
+      hsla(0,0%,100%,.6),
+      hsla(0,0%,100%,.0) 70% )
+      no-repeat center;
+  background-position: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+
+progress::-webkit-progress-bar,
+progress::-webkit-progress-value {
+ background: transparent;
+}
+
+#loadBarContent {
+    z-index: 150;
+    background-image: url("../../assets/img/diamond.png");
 }

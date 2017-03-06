@@ -12,7 +12,7 @@ function importAsset() {
 		tree1.name = "tree1";
 		tree1.rotation.x = -2;
 
-		var tree2 = loadedObj.getObjectByName("tree2");
+		var tree2 = loadedObj.getObjectByName("Boby");
 		tree2.name = "tree2";
 		tree2.rotation.x = -2;
 
@@ -31,6 +31,7 @@ function importMaterial() {
         shading: THREE.SmoothShading,
         reflectivity: 100,
         map: THREE.ImageUtils.loadTexture('../../app/assets/texture/tree2_1.png')
+
     });
 
     var tree2_2 = new THREE.MeshPhongMaterial({
@@ -48,7 +49,6 @@ function importMaterial() {
 	    reflectivity: 100,
 	    map: THREE.ImageUtils.loadTexture('../../app/assets/texture/tree2_3.png')
     });
-
 
     var store = {name:'materialStore', tree2_1:tree2_1, tree2_2:tree2_2, tree2_3:tree2_3};
 
